@@ -23,8 +23,11 @@ console.log(words("xs, as,"));
 
 const slice = curry((start, end, xs) => xs.slice(start, end));
 
-console.log(slice(0)(2)(["a", "b", "c"]));
+const sliceNormal = (s) => (e) => (xs) => xs.slice(s, e);
+const takeNormal = sliceNormal(0);
+
+console.log(sliceNormal(0)(2)(["a", "b", "c"]));
 
 const take = slice(0);
 
-console.log(take(4)(["a", "b", "c", "d", "e", "f", "g", "h"]));
+console.log(takeNormal(4)(["a", "b", "c", "d", "e", "f", "g", "h"]));
