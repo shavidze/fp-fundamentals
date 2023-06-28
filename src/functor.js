@@ -1,7 +1,7 @@
 const Box = (x) => ({
   map: (f) => Box(f(x)),
   inpect: `Box(${x})`,
-  value: x,
+  fold: (f) => f(x),
 });
 
 const nextCharForNumberString_ = (str) => {
@@ -24,6 +24,6 @@ const nextCharForNumberString = (str) =>
     .map((x) => x.trim())
     .map((trimmed) => parseInt(trimmed, 10))
     .map((number) => new Number(number + 1))
-    .map(String.fromCharCode);
+    .fold(String.fromCharCode);
 
 console.log(nextCharForNumberString(" 64 "));
