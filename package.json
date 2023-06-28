@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "curry": "node src/curry.js",
-    "composition":"node src/composition.js"
+    "composition":"node src/composition.js",
+    "functor": "node src/functor.js"
   },
   "repository": {
     "type": "git",
