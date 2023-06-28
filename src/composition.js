@@ -32,3 +32,6 @@ console.log({ shout2 });
 //const log = (tag) => (x) => (console.log(tag, x), x);
 
 const log = curry((tag, x) => (console.log(tag, x), x));
+
+const shout3 = compose(concat("!"), log, loud);
+console.log(shout3("tears"));
