@@ -20,10 +20,13 @@
     "Principles",
     "Tutorial"
   ],
-  "author":"Saba Shavidze",
+  "author": "Saba Shavidze",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/shavidze/fp-fundamentals/issues"
   },
-  "homepage": "https://github.com/shavidze/fp-fundamentals#readme"
+  "homepage": "https://github.com/shavidze/fp-fundamentals#readme",
+  "dependencies": {
+    "rambda": "^7.5.0"
+  }
 }
