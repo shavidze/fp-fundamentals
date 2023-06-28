@@ -69,5 +69,8 @@ const applyDiscount_ = (price, discount) => {
   const savings = percentToFloat(discount);
   return cents - cents * savings;
 };
-const applyDiscount = (price, discount) => Box(moneyToFloat(price)).fold();
-console.log("answer" - applyDiscount("$5.00", "20%"));
+const applyDiscount = (price, discount) =>
+  Box(moneyToFloat(price))
+    .map((cents) => cents - cents * percentToFloat(discount))
+    .fold(answer);
+console.log(applyDiscount("$5.00", "20%"));
