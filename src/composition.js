@@ -15,3 +15,5 @@ const shoutAssociative = compose(compose(first, exclaim), toUpper);
 
 console.log(shout("tears"));
 console.log(shoutAssociative("tears")); // same
+
+console.log(compose(first, exclaim, toUpper));
