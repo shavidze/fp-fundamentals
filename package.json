@@ -1,0 +1,29 @@
+{
+  "name": "fp-fundamentals",
+  "version": "1.0.0",
+  "description": "A hands-on JavaScript project demonstrating key functional programming concepts and principles",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shavidze/fp-fundamentals.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "Functional Programming",
+    "Learning",
+    "Education",
+    "Examples",
+    "Concepts",
+    "Principles",
+    "Tutorial"
+  ],
+  "author":"Saba Shavidze",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shavidze/fp-fundamentals/issues"
+  },
+  "homepage": "https://github.com/shavidze/fp-fundamentals#readme"
+}
