@@ -28,6 +28,7 @@ const Left = (x) => ({
 const res = () =>
   findColor("red")
     .map((x) => x.toUpperCase())
+    .map((x) => x.slice(1))
     .fold(
       () => "no color",
       (x) => `founded ${x}`
