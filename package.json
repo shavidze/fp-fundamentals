@@ -8,7 +8,8 @@
     "curry": "node src/curry.js",
     "composition":"node src/composition.js",
     "functor": "node src/functor.js",
-    "monad": "node src/monad.js"
+    "monad": "node src/monad.js",
+    "task:monad":"node src/Task/monad.js"
   },
   "repository": {
     "type": "git",
