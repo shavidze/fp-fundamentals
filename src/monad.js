@@ -79,32 +79,56 @@ console.log(result);
 
 // Examples
 
-const street_ = (user) => {
-  const address = user.address;
-  if (address) {
-    return address.street;
-  } else {
-    return "no street";
+//const street_ = (user) => {
+//  const address = user.address;
+//  if (address) {
+//    return address.street;
+//  } else {
+//    return "no street";
+//  }
+//};
+
+//const street = (user) =>
+//  fromNullable(user.address)
+//    .map((address) => address.street)
+//    .fold(
+//      () => `no street`,
+//      (res) => res
+//    );
+
+//console.log(
+//  street({
+//    name: "Saba",
+//    address: { street: "Todria" },
+//  })
+//);
+
+//console.log(
+//  street({
+//    name: "Saba",
+//  })
+//);
+const DB_REGEX = "";
+const parseDbUrl_ = (config) => {
+  try {
+    const c = JSON.parse(config);
+    return c.url.match(DB_REGEX);
+  } catch (error) {
+    return null;
   }
 };
 
-const street = (user) =>
-  fromNullable(user.address)
-    .map((address) => address.street)
+const parseDbUrl = (config) =>
+  Right(config)
+    .chain((c) => tryCatch(() => JSON.parse(config)))
+    .map((c) => c.url.match(DB_REGEX))
     .fold(
-      () => `no street`,
+      () => null,
       (res) => res
     );
 
 console.log(
-  street({
-    name: "Saba",
-    address: { street: "Todria" },
-  })
-);
-
-console.log(
-  street({
-    name: "Saba",
+  parseDbUrl({
+    url: "",
   })
 );
