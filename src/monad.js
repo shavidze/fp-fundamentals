@@ -65,8 +65,8 @@ const parseJSON = (contents) => tryCatch(() => JSON.parse(contents));
 
 const readFileSync = (path) => tryCatch(() => fs.readFileSync(path));
 const getPort = () =>
-  readFileSync("packge.json")
-    .map((contents) => parseJSON(contents))
+  readFileSync("package.json")
+    .chain((contents) => parseJSON(contents))
     .map((config) => config.dependencies)
     .fold(
       () => 404,
