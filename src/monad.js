@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 const findColor = (name) => {
   const found = {
     red: "#ff4444",
@@ -34,4 +36,39 @@ const res = () =>
       (x) => `founded ${x}`
     );
 
-console.log(res());
+//console.log(res());
+
+//==================================
+
+const fromNullable = (x) => (x != null ? Right(x) : Left(null));
+
+const tryCatch = (f) => {
+  try {
+    return Right(f);
+  } catch (e) {
+    return Left(e);
+  }
+};
+
+const getPort_ = () => {
+  try {
+    const str = fs.readFileSync("package.json");
+    const config = JSON.parse(str);
+    return config.dependencies;
+  } catch (error) {
+    return {};
+  }
+};
+
+const getPort = () =>
+  tryCatch(fs.readFileSync("package.json")).fold(
+    (error) => `Error occured ${error}`,
+    (res) => {
+      const config = JSON.parse(res);
+      return `here is it ${JSON.stringify(config.dependencies, null, 3)}`;
+    }
+  );
+
+const result = getPort();
+
+console.log(result);
