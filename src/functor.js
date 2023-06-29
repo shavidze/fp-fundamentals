@@ -1,5 +1,6 @@
 const Box = (x) => ({
   map: (f) => Box(f(x)),
+  chain: (f) => f(x),
   inpect: `Box(${x})`,
   fold: (f) => f(x),
 });
@@ -70,7 +71,8 @@ const applyDiscount_ = (price, discount) => {
   return cents - cents * savings;
 };
 const applyDiscount = (price, discount) =>
-  Box(moneyToFloat(price))
-    .map((cents) => cents - cents * percentToFloat(discount))
-    .fold(answer);
+  Box(moneyToFloat(price)).chain((cents) =>
+    Box(percentToFloat(discount)).fold((savings) => cents - cents * savings)
+  );
+
 console.log(applyDiscount("$5.00", "20%"));
