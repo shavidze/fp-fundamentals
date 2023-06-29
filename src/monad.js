@@ -87,3 +87,24 @@ const street_ = (user) => {
     return "no street";
   }
 };
+
+const street = (user) =>
+  fromNullable(user.address)
+    .map((address) => address.street)
+    .fold(
+      () => `no street`,
+      (res) => `street : ${res}`
+    );
+
+console.log(
+  street({
+    name: "Saba",
+    address: { street: "Todria" },
+  })
+);
+
+console.log(
+  street({
+    name: "Saba",
+  })
+);
