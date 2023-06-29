@@ -61,13 +61,14 @@ const getPort_ = () => {
 };
 
 const getPort = () =>
-  tryCatch(fs.readFileSync("package.json")).fold(
-    (error) => `Error occured ${error}`,
-    (res) => {
-      const config = JSON.parse(res);
-      return `here is it ${JSON.stringify(config.dependencies, null, 3)}`;
-    }
-  );
+  tryCatch(fs.readFileSync("package.json"))
+    .map((contents) => JSON.parse(contents))
+    .map((config) => config.dependencies)
+    .map((stringify) => JSON.stringify(stringify, null, 3))
+    .fold(
+      (error) => `Error occured ${error}`,
+      (res) => `here is it ${res}`
+    );
 
 const result = getPort();
 
