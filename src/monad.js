@@ -52,7 +52,7 @@ const tryCatch = (f) => {
 
 const getPort_ = () => {
   try {
-    const str = fs.readFileSync("package.json");
+    const str = fs.readFileSync("packae.json");
     const config = JSON.parse(str);
     return config.dependencies;
   } catch (error) {
