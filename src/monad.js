@@ -22,7 +22,7 @@ const Right = (x) => ({
 
 const Left = (x) => ({
   chain: (f) => f(x),
-  map: (f) => Left(f(x)),
+  map: (f) => Left(x),
   fold: (f, g) => f(x),
   toString: `Left(${x})`,
 });
@@ -44,30 +44,31 @@ const fromNullable = (x) => (x != null ? Right(x) : Left(null));
 
 const tryCatch = (f) => {
   try {
-    return Right(f);
+    return Right(f());
   } catch (e) {
+    debugger;
     return Left(e);
   }
 };
 
 const getPort_ = () => {
   try {
-    const str = fs.readFileSync("packae.json");
+    const str = fs.readFileSync("package.json");
     const config = JSON.parse(str);
     return config.dependencies;
   } catch (error) {
-    return {};
+    return 4000;
   }
 };
 
+const readFileSync = (path) => tryCatch(() => fs.readFileSync(path));
 const getPort = () =>
-  tryCatch(fs.readFileSync("package.json"))
+  readFileSync("packge.json")
     .map((contents) => JSON.parse(contents))
     .map((config) => config.dependencies)
-    .map((stringify) => JSON.stringify(stringify, null, 3))
     .fold(
-      (error) => `Error occured ${error}`,
-      (res) => `here is it ${res}`
+      () => 404,
+      (res) => `here is it ${JSON.stringify(res, null, 3)}`
     );
 
 const result = getPort();
