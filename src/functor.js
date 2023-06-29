@@ -71,8 +71,10 @@ const applyDiscount_ = (price, discount) => {
   return cents - cents * savings;
 };
 const applyDiscount = (price, discount) =>
-  Box(moneyToFloat(price)).chain((cents) =>
-    Box(percentToFloat(discount)).fold((savings) => cents - cents * savings)
-  );
+  Box(moneyToFloat(price))
+    .chain((cents) =>
+      Box(percentToFloat(discount)).map((savings) => cents - cents * savings)
+    )
+    .fold((x) => x);
 
 console.log(applyDiscount("$5.00", "20%"));
