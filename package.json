@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "curry": "node src/curry.js",
-    "composition":"node src/composition.js",
+    "composition": "node src/composition.js",
     "functor": "node src/functor.js",
     "monad": "node src/monad.js",
-    "task:monad":"node src/Task/monad.js"
+    "task:monad": "node src/Task/monad.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/shavidze/fp-fundamentals#readme",
   "dependencies": {
-    "rambda": "^7.5.0"
+    "rambda": "^7.5.0",
+    "types": "^0.1.1"
   }
 }
