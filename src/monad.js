@@ -76,3 +76,14 @@ const getPort = () =>
 const result = getPort();
 
 console.log(result);
+
+// Examples
+
+const street_ = (user) => {
+  const address = user.address;
+  if (address) {
+    return address.street;
+  } else {
+    return "no street";
+  }
+};
