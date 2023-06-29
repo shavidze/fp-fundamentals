@@ -93,7 +93,7 @@ const street = (user) =>
     .map((address) => address.street)
     .fold(
       () => `no street`,
-      (res) => `street : ${res}`
+      (res) => res
     );
 
 console.log(
