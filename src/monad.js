@@ -51,20 +51,22 @@ const tryCatch = (f) => {
   }
 };
 
-const getPort_ = () => {
-  try {
-    const str = fs.readFileSync("package.json");
-    const config = JSON.parse(str);
-    return config.dependencies;
-  } catch (error) {
-    return 4000;
-  }
-};
+//const getPort_ = () => {
+//  try {
+//    const str = fs.readFileSync("package.json");
+//    const config = JSON.parse(str);
+//    return config.dependencies;
+//  } catch (error) {
+//    return 4000;
+//  }
+//};
+
+const parseJSON = (contents) => tryCatch(() => JSON.parse(contents));
 
 const readFileSync = (path) => tryCatch(() => fs.readFileSync(path));
 const getPort = () =>
   readFileSync("packge.json")
-    .map((contents) => JSON.parse(contents))
+    .map((contents) => parseJSON(contents))
     .map((config) => config.dependencies)
     .fold(
       () => 404,
